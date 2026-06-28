@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Room database</string>
+    <string name="database_inspection_msg">Room database table</string>
+</resources>
