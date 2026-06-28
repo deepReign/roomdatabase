@@ -15,7 +15,6 @@ import kotlin.collections.emptyList
 class UserViewModel @Inject constructor(
     private val repository: UserRepository
 ) : ViewModel() {
-
     val users = repository
         .getAllUsers()
         .stateIn(
@@ -29,9 +28,7 @@ class UserViewModel @Inject constructor(
         secondName: String,
         age: Int
     ) {
-
         viewModelScope.launch {
-
             repository.insert(
                 User(
                     firstname = firstName,
@@ -43,14 +40,12 @@ class UserViewModel @Inject constructor(
     }
 
     fun deleteUser(user: User) {
-
         viewModelScope.launch {
-            repository.deleteAllUsers()
+            repository.deleteUser(user = user)
         }
     }
 
     fun updateUser(user: User) {
-
         viewModelScope.launch {
             repository.updateUser(user)
         }

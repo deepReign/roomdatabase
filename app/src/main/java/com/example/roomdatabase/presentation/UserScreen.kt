@@ -95,7 +95,6 @@ fun UserScreen(
                         viewModel.deleteUser(user)
                     },
                     onUpdate = {
-
                         viewModel.updateUser(
                             user.copy(
                                 firstname = "Updated"
