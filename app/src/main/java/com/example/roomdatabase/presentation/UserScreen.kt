@@ -33,6 +33,7 @@ fun UserScreen(
     var firstName by remember { mutableStateOf("") }
     var secondName by remember { mutableStateOf("") }
     var age by remember { mutableStateOf("") }
+    var mail by remember { mutableStateOf("") }
 
     val users by viewModel.users.collectAsStateWithLifecycle()
 
@@ -64,6 +65,14 @@ fun UserScreen(
             label = { Text("Age") }
         )
 
+        Spacer(modifier = Modifier.height(8.dp))
+
+        OutlinedTextField(
+            value = mail,
+            onValueChange = { mail = it },
+            label = { Text("Mail-id") }
+        )
+
         Spacer(modifier = Modifier.height(12.dp))
 
         Button(
@@ -72,12 +81,14 @@ fun UserScreen(
                 viewModel.insert(
                     firstName,
                     secondName,
-                    age.toIntOrNull() ?: 0
+                    age.toIntOrNull() ?: 0,
+                    mail
                 )
 
                 firstName = ""
                 secondName = ""
                 age = ""
+                mail = ""
             }
         ) {
             Text("Add User")
@@ -130,6 +141,10 @@ fun UserRow(
 
             Text(
                 text = "Age: ${user.age}"
+            )
+
+            Text(
+                text = "Mail: ${user.mail}"
             )
 
             Row {

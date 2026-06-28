@@ -26,14 +26,16 @@ class UserViewModel @Inject constructor(
     fun insert(
         firstName: String,
         secondName: String,
-        age: Int
+        age: Int,
+        mail: String
     ) {
         viewModelScope.launch {
             repository.insert(
                 User(
                     firstname = firstName,
                     secondName = secondName,
-                    age = age
+                    age = age,
+                    mail = mail
                 )
             )
         }
